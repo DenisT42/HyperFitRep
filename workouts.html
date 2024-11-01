@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workouts - Fitness Tracker App</title>
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f9;
+      padding: 20px;
+    }
+
+    /* Workouts Container */
+    .workouts-container {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .workouts-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .workouts-header h2 {
+      font-size: 26px;
+      color: #333;
+    }
+
+    .add-workout-button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .add-workout-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Workout List */
+    .workout-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .workout-item {
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .workout-item h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .workout-item p {
+      font-size: 14px;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .workout-item .details {
+      font-weight: bold;
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+<div class="workouts-container">
+  <!-- Header -->
+  <header class="workouts-header">
+    <h2>Your Workouts</h2>
+    <a href="add-workout.html" class="add-workout-button">Add Workout</a>
+  </header>
+
+  <!-- Workout List -->
+  <ul class="workout-list">
+    <li class="workout-item">
+      <h3>Running</h3>
+      <p class="details">Date: October 15, 2023</p>
+      <p>Duration: 30 mins | Calories Burned: 300 kcal</p>
+    </li>
+    <li class="workout-item">
+      <h3>Yoga</h3>
+      <p class="details">Date: October 14, 2023</p>
+      <p>Duration: 45 mins | Calories Burned: 150 kcal</p>
+    </li>
+    <li class="workout-item">
+      <h3>Cycling</h3>
+      <p class="details">Date: October 13, 2023</p>
+      <p>Duration: 20 mins | Calories Burned: 200 kcal</p>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

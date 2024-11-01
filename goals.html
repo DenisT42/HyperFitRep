@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals - Fitness Tracker App</title>
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f9;
+      padding: 20px;
+    }
+
+    /* Goals Container */
+    .goals-container {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .goals-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .goals-header h2 {
+      font-size: 26px;
+      color: #333;
+    }
+
+    .add-goal-button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .add-goal-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Goals List */
+    .goal-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .goal-item {
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .goal-item h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .goal-item .goal-details {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .mark-achieved-button {
+      padding: 8px 12px;
+      background-color: #2196F3;
+      color: white;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .mark-achieved-button:hover {
+      background-color: #1976D2;
+    }
+  </style>
+</head>
+<body>
+<div class="goals-container">
+  <!-- Header -->
+  <header class="goals-header">
+    <h2>Your Goals</h2>
+    <a href="/add-goal.html" class="add-goal-button">Add Goal</a>
+  </header>
+
+  <!-- Goals List -->
+  <ul class="goal-list">
+    <li class="goal-item">
+      <div>
+        <h3>Run 5K in 30 minutes</h3>
+        <p class="goal-details">Deadline: October 31, 2023</p>
+      </div>
+      <button class="mark-achieved-button">Mark as Achieved</button>
+    </li>
+    <li class="goal-item">
+      <div>
+        <h3>Lose 5 pounds</h3>
+        <p class="goal-details">Deadline: November 15, 2023</p>
+      </div>
+      <button class="mark-achieved-button">Mark as Achieved</button>
+    </li>
+    <li class="goal-item">
+      <div>
+        <h3>Cycle 10 miles</h3>
+        <p class="goal-details">Deadline: November 20, 2023</p>
+      </div>
+      <button class="mark-achieved-button">Mark as Achieved</button>
+    </li>
+  </ul>
+</div>
+</body>
+</html>
