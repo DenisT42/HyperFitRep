@@ -1,5 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Welcome to my web app</h1>
-<p>This is the home page</p>
+<!--<h1>Welcome to my web app</h1>-->
+<!--<p>This is the home page</p>-->
+
+<main>
+    <section class="welcome-section">
+        <h1>Welcome to HyperFix</h1>
+        <p>Your journey to a healthier life starts here. Log in or create an account to track your workouts, goals, and progress.</p>
+        <div class="action-buttons">
+            <a href="/login" class="button login-button">Log In</a>
+            <a href="/register" class="button register-button">Register</a>
+        </div>
+    </section>
+</main>
+
+<style>
+    /* Main Content Styling */
+    .welcome-section {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #1e1e2f; /* Dark background */
+        color: #f4f4f9; /* Light text */
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        margin: 20px auto;
+        max-width: 800px;
+    }
+
+    .welcome-section h1 {
+        font-size: 36px;
+        color: #ffffff; /* Bright white for title */
+        margin-bottom: 20px;
+    }
+
+    .welcome-section p {
+        font-size: 18px;
+        color: #dcdcdc; /* Slightly muted light text for description */
+        margin-bottom: 30px;
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 12px 20px;
+        font-size: 18px;
+        color: #1e1e2f; /* Dark button text for contrast */
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: bold;
+    }
+
+    .login-button {
+        background-color: #4CAF50; /* Green button */
+    }
+
+    .login-button:hover {
+        background-color: #45a049;
+        transform: scale(1.05); /* Slight zoom effect */
+    }
+
+    .register-button {
+        background-color: #2196F3; /* Blue button */
+    }
+
+    .register-button:hover {
+        background-color: #1976D2;
+        transform: scale(1.05); /* Slight zoom effect */
+    }
+</style>
 {% endblock %}
