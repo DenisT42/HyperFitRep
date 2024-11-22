@@ -1,20 +1,94 @@
 {% extends "base.html" %}
 {% block content %}
-<!--<h1>Welcome to my web app</h1>-->
-<!--<p>This is the Login page</p>-->
+<main>
+    <section class="login-container">
+        <h2>Log In to HyperFit</h2>
+        <form action="/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-<div class="login-container">
-    <h2>Log In to Fitness Tracker</h2>
-    <form action="/login" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required minlength="8">
+            <button type="submit" class="login-button">Log In</button>
+        </form>
+        <a href="/register" class="register-link">Don’t have an account? Register here</a>
+    </section>
 
-        <button type="submit" class="login-button">Log In</button>
-    </form>
-    <a href="register.html" class="register-link">Don’t have an account? Register here</a>
-</div>
+    <style>
+        /* Login Section Styling */
+        .login-container {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #1e1e2f; /* Dark background */
+            color: #f4f4f9; /* Light text */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+            margin: 20px auto;
+            max-width: 400px;
+        }
 
+        .login-container h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #ffffff; /* Bright text for the title */
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-container label {
+            text-align: left;
+            font-size: 14px;
+            color: #dcdcdc; /* Muted light text for labels */
+        }
+
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #ffffff; /* Light text for inputs */
+            background-color: #444; /* Darker background for inputs */
+            border: 1px solid #666; /* Border matches theme */
+            border-radius: 5px;
+        }
+
+        .login-container input::placeholder {
+            color: #aaaaaa; /* Muted placeholder color */
+        }
+
+        .login-button {
+            padding: 12px;
+            font-size: 18px;
+            color: #1e1e2f; /* Dark text for contrast */
+            background-color: #4CAF50; /* Green button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .login-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        .register-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #2196F3; /* Blue link for contrast */
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</main>
 {% endblock %}

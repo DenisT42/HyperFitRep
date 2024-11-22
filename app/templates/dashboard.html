@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <section class="dashboard-section">
+        <h1>Dashboard</h1>
+        <p>Welcome to your HyperFit Dashboard! Navigate to the pages below:</p>
+        <div class="dashboard-links">
+            <a href="/images" class="button">Images</a>
+            <a href="/workout" class="button">Workout Plans</a>
+            <a href="/exercises" class="button">Exercises</a>
+        </div>
+    </section>
+</main>
+
+<style>
+    /* Dashboard Section Styling */
+    .dashboard-section {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #1e1e2f; /* Dark background */
+        color: #f4f4f9; /* Light text */
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        margin: 20px auto;
+        max-width: 800px;
+    }
+
+    .dashboard-section h1 {
+        font-size: 36px;
+        color: #ffffff; /* Bright white for title */
+        margin-bottom: 10px;
+    }
+
+    .dashboard-section p {
+        font-size: 18px;
+        color: #dcdcdc; /* Slightly muted light text for description */
+        margin-bottom: 30px;
+    }
+
+    .dashboard-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap; /* Ensures responsiveness for smaller screens */
+    }
+
+    .button {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 18px;
+        color: #1e1e2f; /* Dark text for buttons */
+        background-color: #4CAF50; /* Green background for buttons */
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Button shadow */
+    }
+
+    .button:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.05); /* Slight zoom effect */
+    }
+</style>
+{% endblock %}

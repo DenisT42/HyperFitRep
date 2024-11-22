@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <section class="workout-plans-container">
+        <h2>Workout Plans</h2>
+        <p>Track your workouts by adding details below:</p>
+        <form id="workout-form" class="workout-form">
+            <label for="workout-name">Workout Name:</label>
+            <input type="text" id="workout-name" name="workout_name" placeholder="e.g., Running, Yoga" required>
+
+            <label for="workout-time">Time (mins):</label>
+            <input type="number" id="workout-time" name="workout_time" placeholder="e.g., 30" min="1" required>
+
+            <label for="workout-calories">Calories Burned:</label>
+            <input type="number" id="workout-calories" name="workout_calories" placeholder="e.g., 200" min="1" required>
+
+            <label for="workout-heart-rate">Heart Rate (bpm):</label>
+            <input type="number" id="workout-heart-rate" name="workout_heart_rate" placeholder="e.g., 120" min="1" required>
+
+            <button type="button" id="add-workout" class="add-workout-button">Add Workout</button>
+        </form>
+
+        <h3>Your Workouts:</h3>
+        <table id="workout-table" class="workout-table">
+            <thead>
+            <tr>
+                <th>Workout Name</th>
+                <th>Time (mins)</th>
+                <th>Calories Burned</th>
+                <th>Heart Rate (bpm)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- User-added workouts will appear here -->
+            </tbody>
+        </table>
+    </section>
+
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            padding: 20px;
+            background-color: #1e1e2f; /* Dark background */
+            color: #f4f4f9; /* Light text */
+        }
+
+        /* Workout Plans Section */
+        .workout-plans-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #2e2e40; /* Slightly lighter dark background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        }
+
+        .workout-plans-container h2, .workout-plans-container h3 {
+            margin-bottom: 20px;
+            color: #ffffff; /* Bright text for titles */
+        }
+
+        .workout-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .workout-form label {
+            width: 100%;
+            text-align: left;
+            color: #dcdcdc;
+        }
+
+        .workout-form input {
+            width: calc(50% - 10px);
+            padding: 10px;
+            background-color: #444;
+            color: #ffffff;
+            border: 1px solid #666;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .workout-form input::placeholder {
+            color: #aaaaaa;
+        }
+
+        .add-workout-button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #1e1e2f;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .add-workout-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Workout Table */
+        .workout-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .workout-table th, .workout-table td {
+            padding: 10px;
+            border: 1px solid #666;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .workout-table th {
+            background-color: #333;
+            color: #f4f4f9;
+        }
+
+        .workout-table td {
+            background-color: #444;
+        }
+    </style>
+
+    <script>
+        // Add workout functionality
+        document.getElementById("add-workout").addEventListener("click", function() {
+            // Get form values
+            const name = document.getElementById("workout-name").value.trim();
+            const time = document.getElementById("workout-time").value.trim();
+            const calories = document.getElementById("workout-calories").value.trim();
+            const heartRate = document.getElementById("workout-heart-rate").value.trim();
+
+            // Validate inputs
+            if (!name || !time || !calories || !heartRate) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Create a new row
+            const table = document.getElementById("workout-table").querySelector("tbody");
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${time}</td>
+                <td>${calories}</td>
+                <td>${heartRate}</td>
+            `;
+            table.appendChild(newRow);
+
+            // Clear form
+            document.getElementById("workout-form").reset();
+        });
+    </script>
+</main>
+{% endblock %}

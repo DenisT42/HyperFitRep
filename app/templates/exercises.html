@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+  <section class="exercises-container">
+    <h2>Exercises</h2>
+    <p>Browse through 10 exercises, complete with pictures, instructions, and difficulty ratings.</p>
+
+    <div class="exercises-grid">
+      <!-- Exercise 1 -->
+      <div class="exercise-card">
+        <img src="pushups.jpg" alt="Push-ups" class="exercise-image">
+        <h3>Push-ups</h3>
+        <p>Instructions: Keep your back straight, lower your body until your chest almost touches the ground, then push back up.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐⭐☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 2 -->
+      <div class="exercise-card">
+        <img src="plank.jpg" alt="Plank" class="exercise-image">
+        <h3>Plank</h3>
+        <p>Instructions: Hold a straight body position, supported by your forearms and toes, for as long as possible.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐☆☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 3 -->
+      <div class="exercise-card">
+        <img src="squats.jpg" alt="Squats" class="exercise-image">
+        <h3>Squats</h3>
+        <p>Instructions: Stand with your feet shoulder-width apart, lower your body as if sitting back into a chair, and then stand back up.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐☆☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 4 -->
+      <div class="exercise-card">
+        <img src="lunges.jpg" alt="Lunges" class="exercise-image">
+        <h3>Lunges</h3>
+        <p>Instructions: Step forward with one leg and lower your hips until both knees are bent at about a 90-degree angle.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐⭐☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 5 -->
+      <div class="exercise-card">
+        <img src="jumpingjacks.jpg" alt="Jumping Jacks" class="exercise-image">
+        <h3>Jumping Jacks</h3>
+        <p>Instructions: Jump with your legs spread wide and hands touching above your head, then return to the starting position.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐☆☆☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 6 -->
+      <div class="exercise-card">
+        <img src="burpees.jpg" alt="Burpees" class="exercise-image">
+        <h3>Burpees</h3>
+        <p>Instructions: Begin in a standing position, drop into a squat with your hands on the ground, kick back into a plank, then return to squat and jump up.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐⭐⭐
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 7 -->
+      <div class="exercise-card">
+        <img src="bicycles.jpg" alt="Bicycle Crunches" class="exercise-image">
+        <h3>Bicycle Crunches</h3>
+        <p>Instructions: Lie on your back, lift your legs, and alternate touching your knees with opposite elbows in a pedaling motion.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐⭐☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 8 -->
+      <div class="exercise-card">
+        <img src="mountainclimbers.jpg" alt="Mountain Climbers" class="exercise-image">
+        <h3>Mountain Climbers</h3>
+        <p>Instructions: Start in a plank position and alternate driving your knees toward your chest as quickly as possible.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐⭐⭐
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 9 -->
+      <div class="exercise-card">
+        <img src="situps.jpg" alt="Sit-ups" class="exercise-image">
+        <h3>Sit-ups</h3>
+        <p>Instructions: Lie on your back with your knees bent, place your hands behind your head, and lift your torso toward your knees.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐☆☆
+                    </span>
+        </p>
+      </div>
+
+      <!-- Exercise 10 -->
+      <div class="exercise-card">
+        <img src="pullups.jpg" alt="Pull-ups" class="exercise-image">
+        <h3>Pull-ups</h3>
+        <p>Instructions: Hang from a pull-up bar with your palms facing away and pull your body up until your chin is above the bar.</p>
+        <p>Difficulty:
+          <span class="difficulty">
+                        ⭐⭐⭐⭐⭐
+                    </span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      padding: 20px;
+      background-color: #1e1e2f; /* Dark background */
+      color: #f4f4f9; /* Light text */
+    }
+
+    /* Exercises Section */
+    .exercises-container {
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .exercises-container h2 {
+      margin-bottom: 20px;
+      color: #ffffff; /* Bright text for titles */
+    }
+
+    .exercises-container p {
+      margin-bottom: 20px;
+      color: #cccccc; /* Subtle text color */
+    }
+
+    /* Grid Layout */
+    .exercises-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    /* Exercise Card */
+    .exercise-card {
+      background-color: #2e2e40; /* Slightly lighter dark background */
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+      padding: 20px;
+      text-align: left;
+    }
+
+    .exercise-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .exercise-card h3 {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .exercise-card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #dcdcdc;
+    }
+
+    .difficulty {
+      color: #FFD700; /* Gold for stars */
+      font-size: 16px;
+    }
+  </style>
+</main>
+{% endblock %}
