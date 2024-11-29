@@ -6,7 +6,7 @@ from starlette.responses import HTMLResponse
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
-static =
+# static =
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
