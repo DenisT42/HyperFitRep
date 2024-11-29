@@ -1,94 +1,111 @@
 {% extends "base.html" %}
 {% block content %}
-<main>
-    <section class="login-container">
-        <h2>Log In to HyperFit</h2>
-        <form action="/login" method="POST">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">@</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+</div>
 
-            <button type="submit" class="login-button">Log In</button>
-        </form>
-        <a href="/register" class="register-link">Don’t have an account? Register here</a>
-    </section>
+<div class="action-buttons">
+    <a class="btn btn-primary" href="/dashboard" role="button">Login</a>
+</div>
 
-    <style>
-        /* Login Section Styling */
-        .login-container {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #1e1e2f; /* Dark background */
-            color: #f4f4f9; /* Light text */
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-            margin: 20px auto;
-            max-width: 400px;
-        }
+<div class="action-buttons">
+    <a href="/forgot_password" role="button">Forgot Password?</a>
+</div>
 
-        .login-container h2 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            color: #ffffff; /* Bright text for the title */
-        }
+<!--<main>-->
+<!--    <section class="login-container">-->
+<!--        <h2>Log In to HyperFit</h2>-->
+<!--        <form action="/login" method="POST">-->
+<!--            <label for="email">Email:</label>-->
+<!--            <input type="email" id="email" name="email" placeholder="Enter your email" required>-->
 
-        .login-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+<!--            <label for="password">Password:</label>-->
+<!--            <input type="password" id="password" name="password" placeholder="Enter your password" required minlength="8">-->
 
-        .login-container label {
-            text-align: left;
-            font-size: 14px;
-            color: #dcdcdc; /* Muted light text for labels */
-        }
+<!--            <button type="submit" class="login-button">Log In</button>-->
+<!--        </form>-->
+<!--        <a href="/register" class="register-link">Don’t have an account? Register here</a>-->
+<!--    </section>-->
 
-        .login-container input[type="email"],
-        .login-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            color: #ffffff; /* Light text for inputs */
-            background-color: #444; /* Darker background for inputs */
-            border: 1px solid #666; /* Border matches theme */
-            border-radius: 5px;
-        }
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        /* Login Section Styling */&ndash;&gt;-->
+<!--&lt;!&ndash;        .login-container {&ndash;&gt;-->
+<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 40px 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #1e1e2f; /* Dark background */&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #f4f4f9; /* Light text */&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 20px auto;&ndash;&gt;-->
+<!--&lt;!&ndash;            max-width: 400px;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
 
-        .login-container input::placeholder {
-            color: #aaaaaa; /* Muted placeholder color */
-        }
+<!--&lt;!&ndash;        .login-container h2 {&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 26px;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #ffffff; /* Bright text for the title */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
 
-        .login-button {
-            padding: 12px;
-            font-size: 18px;
-            color: #1e1e2f; /* Dark text for contrast */
-            background-color: #4CAF50; /* Green button */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+<!--&lt;!&ndash;        .login-container form {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: flex;&ndash;&gt;-->
+<!--&lt;!&ndash;            flex-direction: column;&ndash;&gt;-->
+<!--&lt;!&ndash;            gap: 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
 
-        .login-button:hover {
-            background-color: #45a049; /* Darker green on hover */
-            transform: scale(1.05); /* Slight zoom effect */
-        }
+<!--&lt;!&ndash;        .login-container label {&ndash;&gt;-->
+<!--&lt;!&ndash;            text-align: left;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 14px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #dcdcdc; /* Muted light text for labels */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
 
-        .register-link {
-            display: block;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #2196F3; /* Blue link for contrast */
-            text-decoration: none;
-        }
+<!--&lt;!&ndash;        .login-container input[type="email"],&ndash;&gt;-->
+<!--&lt;!&ndash;        .login-container input[type="password"] {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 10px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 16px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #ffffff; /* Light text for inputs */&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #444; /* Darker background for inputs */&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 1px solid #666; /* Border matches theme */&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
 
-        .register-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</main>
+<!--&lt;!&ndash;        .login-container input::placeholder {&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #aaaaaa; /* Muted placeholder color */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-button {&ndash;&gt;-->
+<!--&lt;!&ndash;            padding: 12px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 18px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #1e1e2f; /* Dark text for contrast */&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #4CAF50; /* Green button */&ndash;&gt;-->
+<!--&lt;!&ndash;            border: none;&ndash;&gt;-->
+<!--&lt;!&ndash;            border-radius: 5px;&ndash;&gt;-->
+<!--&lt;!&ndash;            cursor: pointer;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-weight: bold;&ndash;&gt;-->
+<!--&lt;!&ndash;            transition: background-color 0.3s ease, transform 0.2s ease;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .login-button:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: #45a049; /* Darker green on hover */&ndash;&gt;-->
+<!--&lt;!&ndash;            transform: scale(1.05); /* Slight zoom effect */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .register-link {&ndash;&gt;-->
+<!--&lt;!&ndash;            display: block;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin-top: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 14px;&ndash;&gt;-->
+<!--&lt;!&ndash;            color: #2196F3; /* Blue link for contrast */&ndash;&gt;-->
+<!--&lt;!&ndash;            text-decoration: none;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+
+<!--&lt;!&ndash;        .register-link:hover {&ndash;&gt;-->
+<!--&lt;!&ndash;            text-decoration: underline;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--</main>-->
 {% endblock %}

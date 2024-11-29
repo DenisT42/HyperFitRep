@@ -35,6 +35,10 @@ async def index(request: Request):
 async def index(request: Request):
     return templates.TemplateResponse("exercises.html", {"request": request})
 
+@app.get("/forgot_password", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("forgot_password.html", {"request": request})
+
 
 
 
