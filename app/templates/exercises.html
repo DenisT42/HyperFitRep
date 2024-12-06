@@ -1,131 +1,285 @@
 {% extends "base.html" %}
 {% block content %}
-  <section class="exercises-container">
-    <h2>Exercises</h2>
-    <p>Browse through 10 exercises, complete with pictures, instructions, and difficulty ratings.</p>
+<section class="container py-5">
+  <h2 class="text-center mb-4">Exercises</h2>
+  <p class="text-center mb-5">Browse through 10 exercises, complete with pictures, instructions, and difficulty ratings.</p>
 
-    <div class="exercises-grid">
-      <!-- Exercise 1 -->
-      <div class="exercise-card">
-        <img src="pushups.jpg" alt="Push-ups" class="exercise-image">
-        <h3>Push-ups</h3>
-        <p>Instructions: Keep your back straight, lower your body until your chest almost touches the ground, then push back up.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐⭐☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 2 -->
-      <div class="exercise-card">
-        <img src="plank.jpg" alt="Plank" class="exercise-image">
-        <h3>Plank</h3>
-        <p>Instructions: Hold a straight body position, supported by your forearms and toes, for as long as possible.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐☆☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 3 -->
-      <div class="exercise-card">
-        <img src="squats.jpg" alt="Squats" class="exercise-image">
-        <h3>Squats</h3>
-        <p>Instructions: Stand with your feet shoulder-width apart, lower your body as if sitting back into a chair, and then stand back up.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐☆☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 4 -->
-      <div class="exercise-card">
-        <img src="lunges.jpg" alt="Lunges" class="exercise-image">
-        <h3>Lunges</h3>
-        <p>Instructions: Step forward with one leg and lower your hips until both knees are bent at about a 90-degree angle.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐⭐☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 5 -->
-      <div class="exercise-card">
-        <img src="jumpingjacks.jpg" alt="Jumping Jacks" class="exercise-image">
-        <h3>Jumping Jacks</h3>
-        <p>Instructions: Jump with your legs spread wide and hands touching above your head, then return to the starting position.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐☆☆☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 6 -->
-      <div class="exercise-card">
-        <img src="burpees.jpg" alt="Burpees" class="exercise-image">
-        <h3>Burpees</h3>
-        <p>Instructions: Begin in a standing position, drop into a squat with your hands on the ground, kick back into a plank, then return to squat and jump up.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐⭐⭐
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 7 -->
-      <div class="exercise-card">
-        <img src="bicycles.jpg" alt="Bicycle Crunches" class="exercise-image">
-        <h3>Bicycle Crunches</h3>
-        <p>Instructions: Lie on your back, lift your legs, and alternate touching your knees with opposite elbows in a pedaling motion.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐⭐☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 8 -->
-      <div class="exercise-card">
-        <img src="mountainclimbers.jpg" alt="Mountain Climbers" class="exercise-image">
-        <h3>Mountain Climbers</h3>
-        <p>Instructions: Start in a plank position and alternate driving your knees toward your chest as quickly as possible.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐⭐⭐
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 9 -->
-      <div class="exercise-card">
-        <img src="situps.jpg" alt="Sit-ups" class="exercise-image">
-        <h3>Sit-ups</h3>
-        <p>Instructions: Lie on your back with your knees bent, place your hands behind your head, and lift your torso toward your knees.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐☆☆
-                    </span>
-        </p>
-      </div>
-
-      <!-- Exercise 10 -->
-      <div class="exercise-card">
-        <img src="pullups.jpg" alt="Pull-ups" class="exercise-image">
-        <h3>Pull-ups</h3>
-        <p>Instructions: Hang from a pull-up bar with your palms facing away and pull your body up until your chin is above the bar.</p>
-        <p>Difficulty:
-          <span class="difficulty">
-                        ⭐⭐⭐⭐⭐
-                    </span>
-        </p>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- Exercise 1 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/pushups.jpg" class="card-img-top" alt="Push-ups">
+        <div class="card-body">
+          <h5 class="card-title">Push-ups</h5>
+          <p class="card-text">Instructions: Keep your back straight, lower your body until your chest almost touches the ground, then push back up.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐⭐☆
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- Exercise 2 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/plank.jpg" class="card-img-top" alt="Plank">
+        <div class="card-body">
+          <h5 class="card-title">Plank</h5>
+          <p class="card-text">Instructions: Hold a straight body position, supported by your forearms and toes, for as long as possible.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐☆☆
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 3 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/squats.jpg" class="card-img-top" alt="Squats">
+        <div class="card-body">
+          <h5 class="card-title">Squats</h5>
+          <p class="card-text">Instructions: Stand with your feet shoulder-width apart, lower your body as if sitting back into a chair, and then stand back up.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐☆☆
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 4 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/lunges.jpg" class="card-img-top" alt="Lunges">
+        <div class="card-body">
+          <h5 class="card-title">Lunges</h5>
+          <p class="card-text">Instructions: Step forward with one leg and lower your hips until both knees are bent at about a 90-degree angle.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐⭐☆
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 5 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/jumpinjacks.jpg" class="card-img-top" alt="Jumping Jacks">
+        <div class="card-body">
+          <h5 class="card-title">Jumping Jacks</h5>
+          <p class="card-text">Instructions: Jump with your legs spread wide and hands touching above your head, then return to the starting position.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐☆☆☆
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 6 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/burpees.jpg" class="card-img-top" alt="Burpees">
+        <div class="card-body">
+          <h5 class="card-title">Burpees</h5>
+          <p class="card-text">Instructions: Begin in a standing position, drop into a squat with your hands on the ground, kick back into a plank, then return to squat and jump up.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐⭐⭐
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 7 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/bicycles.jpg" class="card-img-top" alt="Bicycle Crunches">
+        <div class="card-body">
+          <h5 class="card-title">Bicycle Crunches</h5>
+          <p class="card-text">Instructions: Lie on your back, lift your legs, and alternate touching your knees with opposite elbows in a pedaling motion.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐⭐☆
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 8 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/mauntainclimbers.jpg" class="card-img-top" alt="Mountain Climbers">
+        <div class="card-body">
+          <h5 class="card-title">Mountain Climbers</h5>
+          <p class="card-text">Instructions: Start in a plank position and alternate driving your knees toward your chest as quickly as possible.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐⭐⭐
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 9 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/situps.jpg" class="card-img-top" alt="Sit-ups">
+        <div class="card-body">
+          <h5 class="card-title">Sit-ups</h5>
+          <p class="card-text">Instructions: Lie on your back with your knees bent, place your hands behind your head, and lift your torso toward your knees.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐☆☆
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 10 -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="../static/img/pullups.jpg" class="card-img-top" alt="Pull-ups">
+        <div class="card-body">
+          <h5 class="card-title">Pull-ups</h5>
+          <p class="card-text">Instructions: Hang from a pull-up bar with your palms facing away and pull your body up until your chin is above the bar.</p>
+        </div>
+        <div class="card-footer text-center">
+          <strong>Difficulty:</strong> ⭐⭐⭐⭐⭐
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!--  <section class="exercises-container">-->
+<!--    <h2>Exercises</h2>-->
+<!--    <p>Browse through 10 exercises, complete with pictures, instructions, and difficulty ratings.</p>-->
+
+<!--    <div class="exercises-grid">-->
+<!--      &lt;!&ndash; Exercise 1 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/pushups.jpg" alt="Push-ups" class="exercise-image">-->
+<!--        <h3>Push-ups</h3>-->
+<!--        <p>Instructions: Keep your back straight, lower your body until your chest almost touches the ground, then push back up.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐⭐☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 2 &ndash;&gt;-->
+
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/plank.jpg" alt="Plank" class="exercise-image">-->
+<!--        <h3>Plank</h3>-->
+<!--        <p>Instructions: Hold a straight body position, supported by your forearms and toes, for as long as possible.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐☆☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 3 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/squats.jpg" alt="Squats" class="exercise-image">-->
+<!--        <h3>Squats</h3>-->
+<!--        <p>Instructions: Stand with your feet shoulder-width apart, lower your body as if sitting back into a chair, and then stand back up.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐☆☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 4 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/lunges.jpg" alt="Lunges" class="exercise-image">-->
+<!--        <h3>Lunges</h3>-->
+<!--        <p>Instructions: Step forward with one leg and lower your hips until both knees are bent at about a 90-degree angle.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐⭐☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 5 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/jumpinjacks.jpg" alt="Jumping Jacks" class="exercise-image">-->
+<!--        <h3>Jumping Jacks</h3>-->
+<!--        <p>Instructions: Jump with your legs spread wide and hands touching above your head, then return to the starting position.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐☆☆☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 6 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/burpees.jpg" alt="Burpees" class="exercise-image">-->
+<!--        <h3>Burpees</h3>-->
+<!--        <p>Instructions: Begin in a standing position, drop into a squat with your hands on the ground, kick back into a plank, then return to squat and jump up.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐⭐⭐-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 7 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/bicycles.jpg" alt="Bicycle Crunches" class="exercise-image">-->
+<!--        <h3>Bicycle Crunches</h3>-->
+<!--        <p>Instructions: Lie on your back, lift your legs, and alternate touching your knees with opposite elbows in a pedaling motion.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐⭐☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 8 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/mauntainclimbers.jpg" alt="Mountain Climbers" class="exercise-image">-->
+<!--        <h3>Mountain Climbers</h3>-->
+<!--        <p>Instructions: Start in a plank position and alternate driving your knees toward your chest as quickly as possible.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐⭐⭐-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 9 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/situps.jpg" alt="Sit-ups" class="exercise-image">-->
+<!--        <h3>Sit-ups</h3>-->
+<!--        <p>Instructions: Lie on your back with your knees bent, place your hands behind your head, and lift your torso toward your knees.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐☆☆-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Exercise 10 &ndash;&gt;-->
+<!--      <div class="exercise-card">-->
+<!--        <img src="../static/img/pullups.jpg" alt="Pull-ups" class="exercise-image">-->
+<!--        <h3>Pull-ups</h3>-->
+<!--        <p>Instructions: Hang from a pull-up bar with your palms facing away and pull your body up until your chin is above the bar.</p>-->
+<!--        <p>Difficulty:-->
+<!--          <span class="difficulty">-->
+<!--                        ⭐⭐⭐⭐⭐-->
+<!--                    </span>-->
+<!--        </p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+
+
+
 
 <!--  <style>-->
 <!--    /* General Styles */-->
