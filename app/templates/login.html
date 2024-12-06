@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">@</span>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+
+<div class="container-sm">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="action-buttons">
+        <a class="btn btn-primary" href="/dashboard" role="button">Login</a>
+    </div>
+
+    <div class="action-buttons">
+        <a href="/forgot_password" role="button">Forgot Password?</a>
+    </div>
 </div>
 
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
-</div>
-
-<div class="action-buttons">
-    <a class="btn btn-primary" href="/dashboard" role="button">Login</a>
-</div>
-
-<div class="action-buttons">
-    <a href="/forgot_password" role="button">Forgot Password?</a>
-</div>
 
 <!--<main>-->
 <!--    <section class="login-container">-->
