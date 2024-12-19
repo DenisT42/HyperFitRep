@@ -1,113 +1,114 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from sqlalchemy.orm import joinedload
 from models import User, WorkoutPlan, Exercise, WorkoutExercise, ProgressLog
-from schemas import (
-    UserCreate,
-    WorkoutPlanCreate,
-    ExerciseCreate,
-    WorkoutExerciseCreate,
-    ProgressLogCreate,
-)
-
-# CRUD operations for User
-def get_user(db: Session, user_id: int):
-    return db.query(User).filter(User.id == user_id).first()
+from schemas import UserCreate, WorkoutPlanCreate, ExerciseCreate, ProgressLogCreate
 
 
-def get_user_by_email(db: Session, email: str):
-    return db.query(User).filter(User.email == email).first()
-
-
-def create_user(db: Session, user: UserCreate):
-    db_user = User(username=user.username, email=user.email, password=user.password)
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
-
-
-# CRUD operations for WorkoutPlan
-def get_workout_plan(db: Session, plan_id: int):
-    return db.query(WorkoutPlan).filter(WorkoutPlan.id == plan_id).first()
-
-
-def get_workout_plans_by_user(db: Session, user_id: int):
-    return db.query(WorkoutPlan).filter(WorkoutPlan.user_id == user_id).all()
-
-
-def create_workout_plan(db: Session, plan: WorkoutPlanCreate):
-    db_plan = WorkoutPlan(
-        user_id=plan.user_id, name=plan.name, description=plan.description
+# User CRUD Operations
+async def create_user(db: AsyncSession, user_data: UserCreate):
+    new_user = User(
+        username=user_data.username,
+        email=user_data.email,
+        password=user_data.password,  # Hash password before storing in production
     )
-    db.add(db_plan)
-    db.commit()
-    db.refresh(db_plan)
-    return db_plan
+    db.add(new_user)
+    await db.commit()
+    await db.refresh(new_user)
+    return new_user
 
 
-# CRUD operations for Exercise
-def get_exercise(db: Session, exercise_id: int):
-    return db.query(Exercise).filter(Exercise.id == exercise_id).first()
+async def get_user_by_id(db: AsyncSession, user_id: int):
+    result = await db.execute(select(User).where(User.id == user_id))
+    return result.scalars().first()
 
 
-def get_all_exercises(db: Session):
-    return db.query(Exercise).all()
+async def get_user_by_email(db: AsyncSession, email: str):
+    result = await db.execute(select(User).where(User.email == email))
+    return result.scalars().first()
 
 
-def create_exercise(db: Session, exercise: ExerciseCreate):
-    db_exercise = Exercise(
-        name=exercise.name,
-        instructions=exercise.instructions,
-        image_url=exercise.image_url,
-        difficulty=exercise.difficulty,
+async def get_all_users(db: AsyncSession):
+    result = await db.execute(select(User))
+    return result.scalars().all()
+
+
+# Workout Plan CRUD Operations
+async def create_workout_plan(db: AsyncSession, plan_data: WorkoutPlanCreate, user_id: int):
+    new_plan = WorkoutPlan(
+        user_id=user_id,
+        name=plan_data.name,
+        description=plan_data.description,
     )
-    db.add(db_exercise)
-    db.commit()
-    db.refresh(db_exercise)
-    return db_exercise
+    db.add(new_plan)
+    await db.commit()
+    await db.refresh(new_plan)
+    return new_plan
 
 
-# CRUD operations for WorkoutExercise
-def get_workout_exercise(db: Session, workout_exercise_id: int):
-    return db.query(WorkoutExercise).filter(WorkoutExercise.id == workout_exercise_id).first()
+async def get_workout_plan_by_id(db: AsyncSession, plan_id: int):
+    result = await db.execute(select(WorkoutPlan).where(WorkoutPlan.id == plan_id))
+    return result.scalars().first()
 
 
-def get_workout_exercises_by_plan(db: Session, plan_id: int):
-    return db.query(WorkoutExercise).filter(WorkoutExercise.workout_plan_id == plan_id).all()
+async def get_workout_plans(db: AsyncSession, user_id: int):
+    result = await db.execute(select(WorkoutPlan).where(WorkoutPlan.user_id == user_id))
+    return result.scalars().all()
 
 
-def create_workout_exercise(db: Session, workout_exercise: WorkoutExerciseCreate):
-    db_workout_exercise = WorkoutExercise(
-        workout_plan_id=workout_exercise.workout_plan_id,
-        exercises_id=workout_exercise.exercises_id,
-        duration=workout_exercise.duration,
-        calories_burned=workout_exercise.calories_burned,
-        heart_rate=workout_exercise.heart_rate,
+async def delete_workout_plan(db: AsyncSession, plan_id: int):
+    plan = await get_workout_plan_by_id(db, plan_id)
+    if plan:
+        await db.delete(plan)
+        await db.commit()
+        return True
+    return False
+
+
+# Exercise CRUD Operations
+async def create_exercise(db: AsyncSession, exercise_data: ExerciseCreate):
+    new_exercise = Exercise(
+        name=exercise_data.name,
+        instructions=exercise_data.instructions,
+        image_url=exercise_data.image_url,
+        difficulty=exercise_data.difficulty,
     )
-    db.add(db_workout_exercise)
-    db.commit()
-    db.refresh(db_workout_exercise)
-    return db_workout_exercise
+    db.add(new_exercise)
+    await db.commit()
+    await db.refresh(new_exercise)
+    return new_exercise
 
 
-# CRUD operations for ProgressLog
-def get_progress_log(db: Session, log_id: int):
-    return db.query(ProgressLog).filter(ProgressLog.id == log_id).first()
+async def get_exercises(db: AsyncSession):
+    result = await db.execute(select(Exercise))
+    return result.scalars().all()
 
 
-def get_progress_logs_by_user(db: Session, user_id: int):
-    return db.query(ProgressLog).filter(ProgressLog.user_id == user_id).all()
+async def get_exercise_by_id(db: AsyncSession, exercise_id: int):
+    result = await db.execute(select(Exercise).where(Exercise.id == exercise_id))
+    return result.scalars().first()
 
 
-def create_progress_log(db: Session, log: ProgressLogCreate):
-    db_log = ProgressLog(
-        user_id=log.user_id,
-        date=log.date,
-        workout_plan_id=log.workout_plan_id,
-        total_calories=log.total_calories,
-        total_duration=log.total_duration,
-        avg_heart_rate=log.avg_heart_rate,
+# Progress Log CRUD Operations
+async def create_progress_log(db: AsyncSession, log_data: ProgressLogCreate, user_id: int):
+    new_log = ProgressLog(
+        user_id=user_id,
+        date=log_data.date,
+        workout_plan_id=log_data.workout_plan_id,
+        total_calories=log_data.total_calories,
+        total_duration=log_data.total_duration,
+        avg_heart_rate=log_data.avg_heart_rate,
     )
-    db.add(db_log)
-    db.commit()
-    db.refresh(db_log)
-    return db_log
+    db.add(new_log)
+    await db.commit()
+    await db.refresh(new_log)
+    return new_log
+
+
+async def get_progress_logs(db: AsyncSession, user_id: int):
+    result = await db.execute(
+        select(ProgressLog)
+        .where(ProgressLog.user_id == user_id)
+        .options(joinedload(ProgressLog.workout_plan))
+    )
+    return result.scalars().all()

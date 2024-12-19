@@ -2,63 +2,30 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Replace your DATABASE_URL with the async version
-DATABASE_URL = "mysql+asyncmy://root:hyperfit11@localhost:3401/hyperfit_DB"  # Default to SQLite if not set
+# Async database URL (replace with your database credentials)
+DATABASE_URL = "mysql+asyncmy://root:hyperfit11@localhost:3401/hyperfit_DB"
 
-# Create the AsyncEngine
-engine = create_async_engine(DATABASE_URL, echo=True)
-
-# Create an async session maker
-AsyncSessionLocal = sessionmaker(
-    bind=engine, class_=AsyncSession, expire_on_commit=False
+# Create the asynchronous SQLAlchemy engine
+engine = create_async_engine(
+    DATABASE_URL,
+    echo=True  # Logs all SQL statements (useful for debugging; turn off in production)
 )
 
-# Base class for models
+# Create an asynchronous session maker
+AsyncSessionLocal = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False  # Keeps objects "alive" after session commit
+)
+
+# Base class for defining ORM models
 Base = declarative_base()
 
 # Dependency to get the async database session
 async def get_db():
+    """
+    Yields a database session for use in FastAPI routes.
+    Ensures the session is properly closed after use.
+    """
     async with AsyncSessionLocal() as session:
         yield session
-
-
-
-
-# from sqlalchemy import create_engine
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.orm import sessionmaker
-# import os
-#
-# # # Load environment variables (optional, if you store credentials in .env)
-# # from dotenv import load_dotenv
-# # load_dotenv()
-#
-# # Database connection URL (replace with your actual connection details)
-# DATABASE_URL = "mysql+asyncmy://root:hyperfit11@localhost:3401/hyperfit_DB"  # Default to SQLite if not set
-#
-# # Create the SQLAlchemy engine
-# engine = create_engine(
-#     DATABASE_URL, connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
-# )
-#
-# # Create a configured "SessionLocal" class
-# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-#
-# # Base class for models
-# Base = declarative_base()
-#
-# # Dependency to get a database session
-# def get_db():
-#     db = SessionLocal()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
-
-
-
-
-
-# DATABASE_URL = "mysql+asyncmy://root:kwarteng@localhost:3401/Hyperfit"
-#
-# engine = create_async_engine(DATABASE_URL,echo = True)

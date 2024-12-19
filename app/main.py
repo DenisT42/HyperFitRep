@@ -1,124 +1,89 @@
-from fastapi import FastAPI, Request, Depends
+from fastapi import FastAPI, Request, Depends, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.responses import HTMLResponse
-from sqlalchemy.orm import Session
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from database import Base, engine, get_db  # Import database logic
-import models  # Import models for table creation
+from database import get_db, Base, engine
+import models
+import crud
 
-# Initialize FastAPI app
+# Initialize FastAPI application
 app = FastAPI()
 
-# Create database tables (if not already created)
-Base.metadata.create_all(bind=engine)
-
-# Set up templates and static files
+# Initialize templates and static files
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Routes with database session dependency
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request, db: Session = Depends(get_db)):
-    # Example query (just for demonstration, remove if not needed)
-    users = db.query(models.User).all()
-    return templates.TemplateResponse("home.html", {"request": request, "users": users})
+# Create database tables at startup
+@app.on_event("startup")
+async def startup():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
+
+# Error handling for 404
+@app.exception_handler(StarletteHTTPException)
+async def custom_404_handler(request: Request, exc: StarletteHTTPException):
+    if exc.status_code == 404:
+        return templates.TemplateResponse("404.html", {"request": request}, status_code=404)
+    raise exc
+
+
+# Route: Home Page
+@app.get("/", response_class=HTMLResponse)
+async def homepage(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+
+# Route: About Page
 @app.get("/about", response_class=HTMLResponse)
-async def about(request: Request):
+async def about_page(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
+
+# Route: Register
 @app.get("/register", response_class=HTMLResponse)
-async def register(request: Request):
+async def register_page(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
+
+# Route: Login
 @app.get("/login", response_class=HTMLResponse)
-async def login(request: Request):
+async def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
+
+# Route: Dashboard (requires database access)
 @app.get("/dashboard", response_class=HTMLResponse)
-async def dashboard(request: Request, db: Session = Depends(get_db)):
-    # Example query (fetch data for dashboard, if needed)
-    plans = db.query(models.WorkoutPlan).all()
-    return templates.TemplateResponse("dashboard.html", {"request": request, "plans": plans})
+async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
+    user_data = await crud.get_all_users(db)  # Example query for all users
+    return templates.TemplateResponse("dashboard.html", {"request": request, "users": user_data})
 
+
+# Route: Workout Plans
 @app.get("/workout", response_class=HTMLResponse)
-async def workout(request: Request, db: Session = Depends(get_db)):
-    # Example query for workout plans
-    workouts = db.query(models.WorkoutPlan).all()
-    return templates.TemplateResponse("workout.html", {"request": request, "workouts": workouts})
+async def workout_page(request: Request, db: AsyncSession = Depends(get_db)):
+    workout_plans = await crud.get_workout_plans(db)  # Fetch all workout plans
+    return templates.TemplateResponse("workout.html", {"request": request, "workout_plans": workout_plans})
 
+
+# Route: Exercises
 @app.get("/exercises", response_class=HTMLResponse)
-async def exercises(request: Request, db: Session = Depends(get_db)):
-    # Example query for exercises
-    exercises = db.query(models.Exercise).all()
+async def exercises_page(request: Request, db: AsyncSession = Depends(get_db)):
+    exercises = await crud.get_exercises(db)  # Fetch exercises
     return templates.TemplateResponse("exercises.html", {"request": request, "exercises": exercises})
 
+
+# Route: Forgot Password
 @app.get("/forgot_password", response_class=HTMLResponse)
-async def forgot_password(request: Request):
+async def forgot_password_page(request: Request):
     return templates.TemplateResponse("forgot_password.html", {"request": request})
 
 
-
-
-# from fastapi import FastAPI, Request
-# from fastapi.templating import Jinja2Templates
-# from fastapi.staticfiles import StaticFiles
-# from starlette.responses import HTMLResponse
-# # from crud import *
-# # from database import get_DB
-# app = FastAPI()
-#
-# templates = Jinja2Templates(directory="templates")
-# app.mount("/static",StaticFiles(directory="static"),name="static")
-#
-# @app.get("/", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("home.html", {"request": request})
-#
-# @app.get("/about", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("about.html", {"request": request})
-#
-# @app.get("/register", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("register.html", {"request": request})
-#
-# @app.get("/login", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("login.html", {"request": request})
-#
-# @app.get("/dashboard", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("dashboard.html", {"request": request})
-#
-# @app.get("/workout", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("workout.html", {"request": request})
-#
-# @app.get("/exercises", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("exercises.html", {"request": request})
-#
-# @app.get("/forgot_password", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("forgot_password.html", {"request": request})
-
-
-
-
-
-
-
-# from fastapi import FastAPI, Request
-# from fastapi.templating import Jinja2Templates
-# from fastapi.staticfiles import StaticFiles
-# from starlette.responses import HTMLResponse
-#
-# app = FastAPI()
-#
-# templates = Jinja2Templates(directory="templates")
-#
-# @app.get("/", response_class=HTMLResponse)
-# async def index():
-#     return templates.TemplateResponse("home.html", {"request": request})
+# Example Protected Route (future authentication setup)
+@app.get("/protected", response_class=HTMLResponse)
+async def protected_page(request: Request):
+    # This can later be integrated with JWT or session-based authentication
+    raise HTTPException(status_code=401, detail="Unauthorized access")

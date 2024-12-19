@@ -1,6 +1,7 @@
-from pydantic import BaseModel, EmailStr
-from typing import List, Optional
+from pydantic import BaseModel, EmailStr, Field
+from typing import Optional, List
 from datetime import datetime, date
+
 
 # User Schemas
 class UserBase(BaseModel):
@@ -9,31 +10,31 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(..., min_length=8, max_length=25, description="Password must be between 8 and 25 characters")
 
 
 class UserResponse(UserBase):
     id: int
-    create_at: datetime
+    create_at: Optional[datetime]
 
     class Config:
         orm_mode = True
 
 
-# WorkoutPlan Schemas
+# Workout Plan Schemas
 class WorkoutPlanBase(BaseModel):
     name: str
     description: Optional[str] = None
 
 
 class WorkoutPlanCreate(WorkoutPlanBase):
-    user_id: int
+    pass
 
 
 class WorkoutPlanResponse(WorkoutPlanBase):
     id: int
+    created_at: Optional[datetime]
     user_id: int
-    created_at: datetime
 
     class Config:
         orm_mode = True
@@ -44,7 +45,7 @@ class ExerciseBase(BaseModel):
     name: str
     instructions: Optional[str] = None
     image_url: Optional[str] = None
-    difficulty: Optional[int] = None
+    difficulty: Optional[int] = Field(ge=1, le=5, description="Difficulty must be between 1 (easy) and 5 (hard)")
 
 
 class ExerciseCreate(ExerciseBase):
@@ -58,7 +59,7 @@ class ExerciseResponse(ExerciseBase):
         orm_mode = True
 
 
-# WorkoutExercise Schemas
+# Workout Exercise Schemas
 class WorkoutExerciseBase(BaseModel):
     duration: Optional[int] = None
     calories_burned: Optional[int] = None
@@ -79,7 +80,7 @@ class WorkoutExerciseResponse(WorkoutExerciseBase):
         orm_mode = True
 
 
-# ProgressLog Schemas
+# Progress Log Schemas
 class ProgressLogBase(BaseModel):
     date: date
     total_calories: Optional[int] = None
@@ -95,7 +96,7 @@ class ProgressLogCreate(ProgressLogBase):
 class ProgressLogResponse(ProgressLogBase):
     id: int
     user_id: int
-    workout_plan_id: Optional[int] = None
+    workout_plan_id: Optional[int]
 
     class Config:
         orm_mode = True
