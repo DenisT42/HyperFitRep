@@ -1,133 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-<main class="hero-section">
-    <div class="black-box">
-        <h2 class="text-center mb-4">Workout Plans</h2>
-        <p class="text-center">Track your workouts by adding details below:</p>
-
-        <form id="workout-form" class="row g-3">
-            <div class="col-md-6">
-                <label for="workout-name" class="form-label">Workout Name</label>
-                <input type="text" class="form-control" id="workout-name" name="workout_name" placeholder="e.g., Running, Yoga" required>
-            </div>
-
-            <div class="col-md-3">
-                <label for="workout-time" class="form-label">Time (mins)</label>
-                <input type="number" class="form-control" id="workout-time" name="workout_time" placeholder="e.g., 30" min="1" required>
-            </div>
-
-            <div class="col-md-3">
-                <label for="workout-calories" class="form-label">Calories Burned</label>
-                <input type="number" class="form-control" id="workout-calories" name="workout_calories" placeholder="e.g., 200" min="1" required>
-            </div>
-
-            <div class="col-md-6">
-                <label for="workout-heart-rate" class="form-label">Heart Rate (bpm)</label>
-                <input type="number" class="form-control" id="workout-heart-rate" name="workout_heart_rate" placeholder="e.g., 120" min="1" required>
-            </div>
-
-            <div class="col-12 text-center">
-                <button type="button" id="add-workout" class="btn btn-primary btn-lg px-5">Add Workout</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="black-box mt-5">
-        <h3 class="text-center mb-3">Your Workouts</h3>
-        <div class="table-responsive">
-            <table id="workout-table" class="table table-striped table-hover">
-                <thead class="table-dark">
-                <tr>
-                    <th scope="col">Workout Name</th>
-                    <th scope="col">Time (mins)</th>
-                    <th scope="col">Calories Burned</th>
-                    <th scope="col">Heart Rate (bpm)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- User-added workouts will appear here -->
-                </tbody>
-            </table>
+<div>
+    <h2 class="text-center">Workout Plans</h2>
+    <form method="post" class="mt-4">
+        <div class="mb-3">
+            <label for="name" class="form-label">Workout Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="e.g., Running" required>
         </div>
-    </div>
-</main>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Add Workout</button>
+        </div>
+    </form>
 
-<!--<section class="container my-5">-->
-<!--    <h2 class="text-center mb-4">Workout Plans</h2>-->
-<!--    <p class="text-center">Track your workouts by adding details below:</p>-->
-
-<!--    <form id="workout-form" class="row g-3">-->
-<!--        <div class="col-md-6">-->
-<!--            <label for="workout-name" class="form-label">Workout Name</label>-->
-<!--            <input type="text" class="form-control" id="workout-name" name="workout_name" placeholder="e.g., Running, Yoga" required>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-3">-->
-<!--            <label for="workout-time" class="form-label">Time (mins)</label>-->
-<!--            <input type="number" class="form-control" id="workout-time" name="workout_time" placeholder="e.g., 30" min="1" required>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-3">-->
-<!--            <label for="workout-calories" class="form-label">Calories Burned</label>-->
-<!--            <input type="number" class="form-control" id="workout-calories" name="workout_calories" placeholder="e.g., 200" min="1" required>-->
-<!--        </div>-->
-
-<!--        <div class="col-md-6">-->
-<!--            <label for="workout-heart-rate" class="form-label">Heart Rate (bpm)</label>-->
-<!--            <input type="number" class="form-control" id="workout-heart-rate" name="workout_heart_rate" placeholder="e.g., 120" min="1" required>-->
-<!--        </div>-->
-
-<!--        <div class="col-12 text-center">-->
-<!--            <button type="button" id="add-workout" class="btn btn-primary">Add Workout</button>-->
-<!--        </div>-->
-<!--    </form>-->
-
-<!--    <h3 class="mt-5">Your Workouts:</h3>-->
-<!--    <div class="table-responsive">-->
-<!--        <table id="workout-table" class="table table-striped table-hover mt-3">-->
-<!--            <thead class="table-dark">-->
-<!--            <tr>-->
-<!--                <th scope="col">Workout Name</th>-->
-<!--                <th scope="col">Time (mins)</th>-->
-<!--                <th scope="col">Calories Burned</th>-->
-<!--                <th scope="col">Heart Rate (bpm)</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            &lt;!&ndash; User-added workouts will appear here &ndash;&gt;-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
-<!--</section>-->
-
-    <script>
-        // Add workout functionality
-        document.getElementById("add-workout").addEventListener("click", function() {
-            // Get form values
-            const name = document.getElementById("workout-name").value.trim();
-            const time = document.getElementById("workout-time").value.trim();
-            const calories = document.getElementById("workout-calories").value.trim();
-            const heartRate = document.getElementById("workout-heart-rate").value.trim();
-
-            // Validate inputs
-            if (!name || !time || !calories || !heartRate) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            // Create a new row
-            const table = document.getElementById("workout-table").querySelector("tbody");
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
-                <td>${name}</td>
-                <td>${time}</td>
-                <td>${calories}</td>
-                <td>${heartRate}</td>
-            `;
-            table.appendChild(newRow);
-
-            // Clear form
-            document.getElementById("workout-form").reset();
-        });
-    </script>
+    <h3 class="mt-5">Your Workouts:</h3>
+    <table class="table table-hover mt-3">
+        <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for workout in workout_plans %}
+        <tr>
+            <td>{{ workout.name }}</td>
+            <td>{{ workout.description }}</td>
+            <td>
+                <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

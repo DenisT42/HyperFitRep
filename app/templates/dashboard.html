@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<main class="hero-section">
-    <div class="black-box">
-        <h1 class="text-center mb-4">Dashboard</h1>
-        <p class="text-center">Welcome to your HyperFit Dashboard! Navigate to the pages below:</p>
-
-        <div class="d-flex justify-content-center gap-3 mt-4">
-            <a href="/workout" class="btn btn-primary btn-lg px-5">Workout Plans</a>
-            <a href="/exercises" class="btn btn-secondary btn-lg px-5">Exercises</a>
-        </div>
+<div class="text-center">
+    <h1>Dashboard</h1>
+    <p>Welcome to your HyperFit Dashboard! Navigate to the sections below:</p>
+    <div class="d-flex justify-content-center mt-4">
+        <a href="/workout" class="btn btn-primary btn-lg mx-2">Workout Plans</a>
+        <a href="/exercises" class="btn btn-secondary btn-lg mx-2">Exercises</a>
     </div>
-</main>
+</div>
 {% endblock %}
