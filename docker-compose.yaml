@@ -1,0 +1,19 @@
+services:
+  database:
+    image: database:latest
+    build: 
+      dockerfile: ./Dockerfile-database
+      context: .
+    environment:
+      - MYSQL_ROOT_PASSWORD=hyperfit11
+  
+  app:
+    image: hiperfit:lates
+    build: .
+    volumes:
+      - ./app:/app
+    ports:
+      - 8080:8000
+    restart: always
+    depends_on:
+      - database
