@@ -3,12 +3,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-# Load environment variables (optional, if you store credentials in .env)
-from dotenv import load_dotenv
-load_dotenv()
+# # Load environment variables (optional, if you store credentials in .env)
+# from dotenv import load_dotenv
+# load_dotenv()
 
 # Database connection URL (replace with your actual connection details)
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./test.db")  # Default to SQLite if not set
+DATABASE_URL = "mysql+asyncmy://root:hyperfit11@localhost:3401/hyperfit_DB"  # Default to SQLite if not set
 
 # Create the SQLAlchemy engine
 engine = create_engine(
@@ -28,7 +28,6 @@ def get_db():
         yield db
     finally:
         db.close()
-
 
 
 

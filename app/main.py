@@ -3,7 +3,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import HTMLResponse
 from crud import *
-
+from database import get_DB
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
