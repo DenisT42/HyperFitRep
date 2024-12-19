@@ -65,8 +65,8 @@ async def forgot_password(request: Request):
 # from fastapi.templating import Jinja2Templates
 # from fastapi.staticfiles import StaticFiles
 # from starlette.responses import HTMLResponse
-# from crud import *
-# from database import get_DB
+# # from crud import *
+# # from database import get_DB
 # app = FastAPI()
 #
 # templates = Jinja2Templates(directory="templates")
