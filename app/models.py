@@ -1,23 +1,28 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Date
+from sqlalchemy import (
+    Column, Integer, String, Text, DateTime, ForeignKey, Date
+)
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 
 Base = declarative_base()
 
+# Users Table
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String(50), unique=True, nullable=False)
     email = Column(String(100), unique=True, nullable=False)
-    password = Column(String(25), nullable=False)
+    password = Column(String(25), nullable=False)  # Hash this in production
     create_at = Column(DateTime, default=datetime.utcnow)
 
+    # Relationships
     workout_plans = relationship("WorkoutPlan", back_populates="user")
     progress_logs = relationship("ProgressLog", back_populates="user")
 
 
+# Workout Plans Table
 class WorkoutPlan(Base):
     __tablename__ = "workout_plans"
 
@@ -27,11 +32,13 @@ class WorkoutPlan(Base):
     description = Column(Text)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+    # Relationships
     user = relationship("User", back_populates="workout_plans")
     workout_exercises = relationship("WorkoutExercise", back_populates="workout_plan")
     progress_logs = relationship("ProgressLog", back_populates="workout_plan")
 
 
+# Exercises Table
 class Exercise(Base):
     __tablename__ = "exercises"
 
@@ -41,9 +48,11 @@ class Exercise(Base):
     image_url = Column(String(255))
     difficulty = Column(Integer)
 
+    # Relationships
     workout_exercises = relationship("WorkoutExercise", back_populates="exercise")
 
 
+# Workout Exercises Table
 class WorkoutExercise(Base):
     __tablename__ = "workout_exercises"
 
@@ -54,10 +63,12 @@ class WorkoutExercise(Base):
     calories_burned = Column(Integer)
     heart_rate = Column(Integer)
 
+    # Relationships
     workout_plan = relationship("WorkoutPlan", back_populates="workout_exercises")
     exercise = relationship("Exercise", back_populates="workout_exercises")
 
 
+# Progress Logs Table
 class ProgressLog(Base):
     __tablename__ = "progress_logs"
 
@@ -69,5 +80,6 @@ class ProgressLog(Base):
     total_duration = Column(Integer)
     avg_heart_rate = Column(Integer)
 
+    # Relationships
     user = relationship("User", back_populates="progress_logs")
     workout_plan = relationship("WorkoutPlan", back_populates="progress_logs")

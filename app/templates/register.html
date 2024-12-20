@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <main class="hero2-section position-relative">
-    <div class="position-absolute top-0 start-0" style="margin-top: 24px; margin-left: 20px;">
-        <img src="/static/img/logo.png" alt="HyperFit Logo" class="rounded-circle" style="width: 80px; height: 80px;">
-    </div>
-
-    <!-- Register Form -->
     <div class="black-box mx-auto mt-5" style="max-width: 600px;">
         <h2 class="text-center mb-4">Register</h2>
         <form method="post" action="/register">
@@ -21,171 +16,13 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <div class="mb-3">
-                <label for="inputRepeatPassword" class="form-label">Repeat Password</label>
-                <input type="password" class="form-control" id="inputRepeatPassword" placeholder="Repeat your password" required>
-            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary btn-lg px-5">Register</button>
             </div>
         </form>
+        {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
     </div>
 </main>
 {% endblock %}
-
-
-
-
-<!--<div class="container my-5">-->
-<!--    <h1 class="text-center mb-4">Register</h1>-->
-<!--    <form method="post" action="/register"  >-->
-<!--        <div class="mb-3 row">-->
-<!--            <label for="username" class="col-md-3 col-form-label text-md-end">Username</label>-->
-<!--            <div class="col-md-9">-->
-<!--                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="mb-3 row">-->
-<!--            <label for="email" class="col-md-3 col-form-label text-md-end">Email</label>-->
-<!--            <div class="col-md-9">-->
-<!--                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="mb-3 row">-->
-<!--            <label for="password" class="col-md-3 col-form-label text-md-end">Password</label>-->
-<!--            <div class="col-md-9">-->
-<!--                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="mb-3 row">-->
-<!--            <label for="inputRepeatPassword" class="col-md-3 col-form-label text-md-end">Repeat Password</label>-->
-<!--            <div class="col-md-9">-->
-<!--                <input type="password" class="form-control" id="inputRepeatPassword"  placeholder="Repeat your password" required>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="text-center">-->
-<!--            <button type="submit">Register</button>-->
-<!--&lt;!&ndash;            <a class="btn btn-primary btn-lg" href="/" role="button">Register</a>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
-
-
-
-
-<!--<div class="container">-->
-<!--    <form>-->
-<!--        <div class="row mb-3">-->
-<!--            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>-->
-<!--            <div class="col-sm-10">-->
-<!--                <input type="email" class="form-control" id="inputEmail3">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row mb-3">-->
-<!--            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>-->
-<!--            <div class="col-sm-10">-->
-<!--                <input type="password" class="form-control" id="inputPassword3">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row mb-3">-->
-<!--            <label for="inputPassword3" class="col-sm-2 col-form-label">Repeat password</label>-->
-<!--            <div class="col-sm-10">-->
-<!--                <input type="password" class="form-control" id="inputPassword3">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <a class="btn btn-primary" href="/" role="button">Register</a></form>-->
-<!--</div>-->
-
-
-
-
-<!--<main>-->
-<!--    <section class="register-section">-->
-<!--        <h1>Create Your Account</h1>-->
-<!--        <p>Join us to track your workouts, goals, and progress effectively!</p>-->
-<!--        <form action="/register" method="POST" class="register-form">-->
-<!--            <label for="username">Username:</label>-->
-<!--            <input type="text" id="username" name="username" required placeholder="Enter your username">-->
-
-<!--            <label for="email">Email:</label>-->
-<!--            <input type="email" id="email" name="email" required placeholder="Enter your email">-->
-
-<!--            <label for="password">Password:</label>-->
-<!--            <input type="password" id="password" name="password" required minlength="8" placeholder="Enter a strong password">-->
-
-<!--            <label for="confirm-password">Confirm Password:</label>-->
-<!--            <input type="password" id="confirm-password" name="confirm_password" required minlength="8" placeholder="Re-enter your password">-->
-
-<!--            <button type="submit" class="register-button">Register</button>-->
-<!--        </form>-->
-<!--    </section>-->
-<!--</main>-->
-
-<!--<style>-->
-<!--    /* Register Section Styling */-->
-<!--    .register-section {-->
-<!--        text-align: center;-->
-<!--        padding: 40px 20px;-->
-<!--        background-color: #1e1e2f; /* Dark background */-->
-<!--        color: #f4f4f9; /* Light text */-->
-<!--        border-radius: 10px;-->
-<!--        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow */-->
-<!--        margin: 20px auto;-->
-<!--        max-width: 600px;-->
-<!--    }-->
-
-<!--    .register-section h1 {-->
-<!--        font-size: 36px;-->
-<!--        color: #ffffff; /* Bright white for title */-->
-<!--        margin-bottom: 10px;-->
-<!--    }-->
-
-<!--    .register-section p {-->
-<!--        font-size: 18px;-->
-<!--        color: #dcdcdc; /* Slightly muted light text for description */-->
-<!--        margin-bottom: 30px;-->
-<!--    }-->
-
-<!--    .register-form {-->
-<!--        display: flex;-->
-<!--        flex-direction: column;-->
-<!--        gap: 15px;-->
-<!--        text-align: left;-->
-<!--    }-->
-
-<!--    .register-form label {-->
-<!--        font-size: 16px;-->
-<!--        color: #dcdcdc;-->
-<!--    }-->
-
-<!--    .register-form input {-->
-<!--        width: 100%;-->
-<!--        padding: 10px;-->
-<!--        font-size: 16px;-->
-<!--        color: #ffffff; /* Light text for inputs */-->
-<!--        background-color: #2e2e40; /* Dark input background */-->
-<!--        border: 1px solid #444;-->
-<!--        border-radius: 5px;-->
-<!--    }-->
-
-<!--    .register-form input::placeholder {-->
-<!--        color: #aaaaaa; /* Muted placeholder color */-->
-<!--    }-->
-
-<!--    .register-button {-->
-<!--        padding: 12px;-->
-<!--        font-size: 18px;-->
-<!--        color: #1e1e2f; /* Dark button text for contrast */-->
-<!--        background-color: #4CAF50; /* Green button */-->
-<!--        border: none;-->
-<!--        border-radius: 5px;-->
-<!--        cursor: pointer;-->
-<!--        font-weight: bold;-->
-<!--        transition: background-color 0.3s ease, transform 0.2s ease;-->
-<!--    }-->
-
-<!--    .register-button:hover {-->
-<!--        background-color: #45a049;-->
-<!--        transform: scale(1.05); /* Slight zoom effect */-->
-<!--    }-->
-<!--</style>-->
