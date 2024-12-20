@@ -1,38 +1,74 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-5">
-    <h1 class="text-center mb-4">Register</h1>
-    <form method="post" action="/register"  >
-        <div class="mb-3 row">
-            <label for="username" class="col-md-3 col-form-label text-md-end">Username</label>
-            <div class="col-md-9">
+<main class="hero2-section position-relative">
+    <div class="position-absolute top-0 start-0" style="margin-top: 24px; margin-left: 20px;">
+        <img src="/static/img/logo.png" alt="HyperFit Logo" class="rounded-circle" style="width: 80px; height: 80px;">
+    </div>
+
+    <!-- Register Form -->
+    <div class="black-box mx-auto mt-5" style="max-width: 600px;">
+        <h2 class="text-center mb-4">Register</h2>
+        <form method="post" action="/register">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
             </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="email" class="col-md-3 col-form-label text-md-end">Email</label>
-            <div class="col-md-9">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="password" class="col-md-3 col-form-label text-md-end">Password</label>
-            <div class="col-md-9">
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
             </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="inputRepeatPassword" class="col-md-3 col-form-label text-md-end">Repeat Password</label>
-            <div class="col-md-9">
-                <input type="password" class="form-control" id="inputRepeatPassword"  placeholder="Repeat your password" required>
+            <div class="mb-3">
+                <label for="inputRepeatPassword" class="form-label">Repeat Password</label>
+                <input type="password" class="form-control" id="inputRepeatPassword" placeholder="Repeat your password" required>
             </div>
-        </div>
-        <div class="text-center">
-            <button type="submit">Register</button>
-<!--            <a class="btn btn-primary btn-lg" href="/" role="button">Register</a>-->
-        </div>
-    </form>
-</div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg px-5">Register</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
+
+
+
+
+<!--<div class="container my-5">-->
+<!--    <h1 class="text-center mb-4">Register</h1>-->
+<!--    <form method="post" action="/register"  >-->
+<!--        <div class="mb-3 row">-->
+<!--            <label for="username" class="col-md-3 col-form-label text-md-end">Username</label>-->
+<!--            <div class="col-md-9">-->
+<!--                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="mb-3 row">-->
+<!--            <label for="email" class="col-md-3 col-form-label text-md-end">Email</label>-->
+<!--            <div class="col-md-9">-->
+<!--                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="mb-3 row">-->
+<!--            <label for="password" class="col-md-3 col-form-label text-md-end">Password</label>-->
+<!--            <div class="col-md-9">-->
+<!--                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="mb-3 row">-->
+<!--            <label for="inputRepeatPassword" class="col-md-3 col-form-label text-md-end">Repeat Password</label>-->
+<!--            <div class="col-md-9">-->
+<!--                <input type="password" class="form-control" id="inputRepeatPassword"  placeholder="Repeat your password" required>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="text-center">-->
+<!--            <button type="submit">Register</button>-->
+<!--&lt;!&ndash;            <a class="btn btn-primary btn-lg" href="/" role="button">Register</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
 
 
 
@@ -153,4 +189,3 @@
 <!--        transform: scale(1.05); /* Slight zoom effect */-->
 <!--    }-->
 <!--</style>-->
-{% endblock %}

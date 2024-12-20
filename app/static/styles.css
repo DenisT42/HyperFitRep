@@ -26,6 +26,17 @@
 /*    text-align: center;*/
 /*    filter: blur(17px);*/
 /*}*/
+.hero2-section {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    text-align: center;
+    overflow: hidden; /* Ensures pseudo-element doesn't overflow */
+    z-index: 1;}
 
 .hero-section {
     position: relative;

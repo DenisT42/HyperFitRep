@@ -39,10 +39,8 @@ async def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @app.get("/dashboard", response_class=HTMLResponse)
-async def dashboard(request: Request, db: Session = Depends(get_db)):
-    # Example query (fetch data for dashboard, if needed)
-    plans = db.query(models.WorkoutPlan).all()
-    return templates.TemplateResponse("dashboard.html", {"request": request, "plans": plans})
+async def index(request: Request):
+    return templates.TemplateResponse("dashboard.html", {"request": request})
 
 @app.get("/workout", response_class=HTMLResponse)
 async def workout(request: Request, db: Session = Depends(get_db)):
@@ -51,10 +49,8 @@ async def workout(request: Request, db: Session = Depends(get_db)):
     return templates.TemplateResponse("workout.html", {"request": request, "workouts": workouts})
 
 @app.get("/exercises", response_class=HTMLResponse)
-async def exercises(request: Request, db: Session = Depends(get_db)):
-    # Example query for exercises
-    exercises = db.query(models.Exercise).all()
-    return templates.TemplateResponse("exercises.html", {"request": request, "exercises": exercises})
+async def index(request: Request):
+    return templates.TemplateResponse("exercises.html", {"request": request})
 
 @app.get("/forgot_password", response_class=HTMLResponse)
 async def forgot_password(request: Request):
@@ -98,9 +94,9 @@ async def forgot_password(request: Request):
 # async def index(request: Request):
 #     return templates.TemplateResponse("workout.html", {"request": request})
 #
-# @app.get("/exercises", response_class=HTMLResponse)
-# async def index(request: Request):
-#     return templates.TemplateResponse("exercises.html", {"request": request})
+@app.get("/exercises", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("exercises.html", {"request": request})
 #
 # @app.get("/forgot_password", response_class=HTMLResponse)
 # async def index(request: Request):
