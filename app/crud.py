@@ -24,7 +24,6 @@ def create_user(db: Session, user: UserCreate):
     db.refresh(db_user)
     return db_user
 
-
 # CRUD operations for WorkoutPlan
 def get_workout_plan(db: Session, plan_id: int):
     return db.query(WorkoutPlan).filter(WorkoutPlan.id == plan_id).first()

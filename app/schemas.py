@@ -5,7 +5,7 @@ from datetime import datetime, date
 # User Schemas
 class UserBase(BaseModel):
     username: str
-    email: EmailStr
+    email: str
 
 
 class UserCreate(UserBase):
@@ -34,6 +34,7 @@ class WorkoutPlanResponse(WorkoutPlanBase):
     id: int
     user_id: int
     created_at: datetime
+
 
     class Config:
         orm_mode = True

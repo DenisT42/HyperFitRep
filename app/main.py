@@ -3,26 +3,24 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from starlette.responses import HTMLResponse
 from sqlalchemy.orm import Session
+from sqlalchemy.future import select
 
 from database import Base, engine, get_db  # Import database logic
 import models  # Import models for table creation
+from crud import create_user
+from schemas import UserCreate
 
 # Initialize FastAPI app
 app = FastAPI()
 
-# Create database tables (if not already created)
-Base.metadata.create_all(bind=engine)
 
 # Set up templates and static files
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Routes with database session dependency
 @app.get("/", response_class=HTMLResponse)
-async def index(request: Request, db: Session = Depends(get_db)):
-    # Example query (just for demonstration, remove if not needed)
-    users = db.query(models.User).all()
-    return templates.TemplateResponse("home.html", {"request": request, "users": users})
+async def index(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
 
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
@@ -31,6 +29,10 @@ async def about(request: Request):
 @app.get("/register", response_class=HTMLResponse)
 async def register(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
+
+@app.post("/register", response_class=HTMLResponse)
+async def register(user: UserCreate, db: Session = Depends(get_db)):
+    return create_user (db, user)
 
 @app.get("/login", response_class=HTMLResponse)
 async def login(request: Request):
